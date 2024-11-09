@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://binfb3b7c0tiy"]
+
+[ext_resource type="Texture2D" uid="uid://bai4icwfd1o2h" path="res://icon.svg" id="1_bdlx6"]
+
+[node name="ArmamentPoint" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_bdlx6")

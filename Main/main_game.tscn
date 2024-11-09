@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsbm2iaw2j1m8"]
+
+[ext_resource type="PackedScene" uid="uid://vu06h5ml7x2f" path="res://Scenes/GameObjects/player.tscn" id="1_6emlj"]
+[ext_resource type="PackedScene" uid="uid://uw5for3hw80f" path="res://Scenes/GameObjects/enemy.tscn" id="2_c47u4"]
+
+[sub_resource type="Environment" id="Environment_r12eh"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_oudao"]
+
+[node name="MainGame" type="Node"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 540
+
+[node name="Panel" type="Panel" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel3" type="Panel" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="Node2D"]
+position = Vector2(640, 360)
+
+[node name="Background" type="Node2D" parent="Node2D"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="Node2D/Background"]
+custom_minimum_size = Vector2(540, 720)
+offset_left = 370.0
+offset_right = 910.0
+offset_bottom = 720.0
+
+[node name="SubViewport" type="SubViewport" parent="Node2D/Background/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(540, 720)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="Node2D/Background/SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_r12eh")
+
+[node name="Node3D" type="Node3D" parent="Node2D/Background/SubViewportContainer/SubViewport"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node2D/Background/SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.24874)
+mesh = SubResource("SphereMesh_oudao")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Node2D/Background/SubViewportContainer/SubViewport"]
+
+[node name="Player" parent="Node2D" instance=ExtResource("1_6emlj")]
+
+[node name="Enemy" parent="Node2D" instance=ExtResource("2_c47u4")]

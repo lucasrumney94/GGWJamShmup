@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://vu06h5ml7x2f"]
+
+[ext_resource type="Texture2D" uid="uid://bai4icwfd1o2h" path="res://icon.svg" id="1_mbb6p"]
+[ext_resource type="Script" path="res://Scenes/GameObjects/player.gd" id="1_x2igu"]
+[ext_resource type="PackedScene" uid="uid://binfb3b7c0tiy" path="res://Scenes/GameObjects/armament_point.tscn" id="3_fn052"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kndgj"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5dfry"]
+radius = 32.0
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(642, 382)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_x2igu")
+armament_point_scene = ExtResource("3_fn052")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kndgj")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_5dfry")
+
+[node name="Graphics" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Graphics"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_mbb6p")
