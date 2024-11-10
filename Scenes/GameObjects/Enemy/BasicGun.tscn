@@ -6,7 +6,7 @@
 [node name="BasicGun" type="CharacterBody2D"]
 script = ExtResource("1_wfvmt")
 projectile = ExtResource("2_lnbf8")
+bulletFireSpeed = 60.0
 
 [node name="ShootTimer" type="Timer" parent="."]
-wait_time = 0.5
 autostart = true

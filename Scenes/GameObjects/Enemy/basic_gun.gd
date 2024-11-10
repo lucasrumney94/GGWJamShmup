@@ -7,10 +7,6 @@ extends CharacterBody2D
 func _ready():
 	$ShootTimer.timeout.connect(on_shoot_timeout)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func on_shoot_timeout():
 	Shoot()
 
@@ -27,7 +23,7 @@ func Shoot():
 	# Set projectile velocity
 	#             inherit velo, speed, unit direction
 	proj.velocity = get_parent().velocity + (bulletFireSpeed * Vector2.DOWN)
-	print("(parent) enemy VELO:", get_parent().velocity, " proj VELO:", proj.velocity)
+	# print("(parent) enemy VELO:", get_parent().velocity, " proj VELO:", proj.velocity)
 
 	# Add a tiny variance in each enemies fire timer (+/- a set percent)
 	# var current_wait_time = $ShootTimer.wait_time;

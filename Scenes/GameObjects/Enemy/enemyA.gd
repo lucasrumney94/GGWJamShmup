@@ -6,12 +6,8 @@ extends CharacterBody2D
 var rng = RandomNumberGenerator.new();
 	
 func _physics_process(delta: float) -> void:
-	Move(delta)
-	
-func _process(delta: float) -> void:
-	#Move(delta)
-	pass
+	Move()
 
-func Move(delta: float):
-	velocity = (initialMovementDirection * movementSpeed) + 4.*Vector2.RIGHT*sin(Time.get_ticks_msec()/100)
+func Move():
+	velocity = (initialMovementDirection * movementSpeed) + 4.*Vector2.RIGHT*sin(Time.get_ticks_msec()/500.)
 	move_and_collide(velocity)
