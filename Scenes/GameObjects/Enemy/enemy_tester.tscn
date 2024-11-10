@@ -59,4 +59,3 @@ mesh = SubResource("SphereMesh_oudao")
 [node name="Player" parent="Node2D" instance=ExtResource("1_5o86b")]
 
 [node name="EnemyA" parent="Node2D" instance=ExtResource("2_bel1d")]
-bulletFireSpeed = 200.0

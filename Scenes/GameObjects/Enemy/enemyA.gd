@@ -1,16 +1,9 @@
 extends CharacterBody2D
 
-@export var projectile: PackedScene
-@export var fireTimerSpread: float = .03
-@export var bulletFireSpeed: float = 30.
-
 @export var movementSpeed: float = 1.0
 @export var initialMovementDirection: Vector2 = Vector2.DOWN
 
 var rng = RandomNumberGenerator.new();
-
-func _ready():
-	$ShootTimer.timeout.connect(on_shoot_timeout)
 	
 func _physics_process(delta: float) -> void:
 	Move(delta)
@@ -19,30 +12,6 @@ func _process(delta: float) -> void:
 	#Move(delta)
 	pass
 
-func Shoot():
-	# Instantiate projectile
-	var proj = projectile.instantiate()
-
-	# Set initial location to location of enemy ship
-	proj.global_position = global_position
-
-	# Child to scene root
-	find_parent("Node2D").add_child(proj)
-
-	# Set projectile velocity
-	#             inherit velo, speed, unit direction
-	proj.velocity = velocity + (bulletFireSpeed * Vector2.DOWN)
-	#print("enemy VELO:", velocity, " proj VELO:", proj.velocity)
-
-	# Add a tiny variance in each enemies fire timer (+/- a set percent)
-	# var current_wait_time = $ShootTimer.wait_time;
-	# $ShootTimer.wait_time = rng.randf_range(current_wait_time*(1.-fireTimerSpread), current_wait_time*(1.+fireTimerSpread))
-	# print("new shot wait time for enemyA set to:", $ShootTimer.wait_time)
-
 func Move(delta: float):
 	velocity = (initialMovementDirection * movementSpeed)
 	move_and_collide(velocity)
-
-
-func on_shoot_timeout():
-	Shoot()
