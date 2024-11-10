@@ -24,6 +24,7 @@ CardManager="*res://Scenes/Autoloads/card_manager.tscn"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/stretch/mode="viewport"
 window/per_pixel_transparency/allowed=true
 
 [input]
