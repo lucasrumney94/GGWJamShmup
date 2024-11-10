@@ -20,11 +20,11 @@ func Shoot():
 	# Instantiate projectile
 	var proj = projectile.instantiate()
 	
+	# Set initial location to location of enemy ship
+	proj.global_position = global_position
+	
 	# Child to scene root
 	find_parent("Node2D").add_child(proj)
-	
-	# Set location to location of ship
-	proj.global_position = global_position
 
 	# Set projectile velocity
 	#             inherit velo, speed, unit direction
@@ -32,9 +32,9 @@ func Shoot():
 	print("enemy VELO:", velocity, " proj VELO:", proj.velocity)
 
 	# Add a tiny variance in each enemies fire timer (+/- a set percent)
-	var current_wait_time = $ShootTimer.wait_time;
-	$ShootTimer.wait_time = rng.randf_range(current_wait_time*(1.-fireTimerSpread), current_wait_time*(1.+fireTimerSpread))
-	print("new shot wait time for enemyA set to:", $ShootTimer.wait_time)
+	# var current_wait_time = $ShootTimer.wait_time;
+	# $ShootTimer.wait_time = rng.randf_range(current_wait_time*(1.-fireTimerSpread), current_wait_time*(1.+fireTimerSpread))
+	# print("new shot wait time for enemyA set to:", $ShootTimer.wait_time)
 
 func Move(delta: float):
 	velocity = (initialMovementDirection * movementSpeed)
