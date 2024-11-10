@@ -1,6 +1,6 @@
 extends Node
 
-@export var main_menu: PackedScene
+#@export var main_menu: PackedScene
 @export var options_menu: PackedScene
 
 
@@ -22,5 +22,6 @@ func on_options_pressed():
 
 func on_quit_pressed():
 	get_tree().paused = false
-	Engine.time_scale = 0.1
-	get_tree().change_scene_to_packed(main_menu)
+	Engine.time_scale = 1.0
+	#get_tree().change_scene_to_packed(main_menu)
+	get_tree().change_scene_to_file("res://Main/main_menu.tscn")
