@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var graphics: Node2D = $Graphics
+
 @export var armament_point_scene: PackedScene
 
 @export var acceleration: float = 5.0
@@ -27,10 +29,17 @@ func init():
 
 func _physics_process(delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
+	
+	#ANIMATE SHIP
+	graphics.scale.x = lerpf(1, 0.66, abs(input_dir.x))
+	graphics.skew = lerpf(0, deg_to_rad(12.5), abs(input_dir.x)) * sign(input_dir.x)
+	
 	input_dir.x = input_dir.x * maneuver_speed * maneuver_direction
 	input_dir.y = input_dir.y * vertical_speed
 	var mult = 1.0
 	accelerate_in_direction(input_dir, mult, delta)
+	
+	
 	
 	move_and_slide()
 
@@ -57,4 +66,4 @@ func readjust_armaments():
 	for i in armaments.size():
 		if armaments[i] == null:
 			return
-		armaments[i].global_position = global_position + (Vector2.UP * 32).rotated(TAU / armaments.size()) * 32
+		armaments[i].global_position = global_position + (Vector2.UP).rotated(TAU / armaments.size()) * 32

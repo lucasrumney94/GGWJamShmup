@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjeaf8r046vqf"]
+
+[ext_resource type="Script" path="res://Scenes/Autoloads/card_manager.gd" id="1_gqyie"]
+[ext_resource type="Script" path="res://Cards/card.gd" id="2_m3hcr"]
+[ext_resource type="Resource" uid="uid://biimm4f1nrw5e" path="res://Cards/reflector.tres" id="3_pmrxy"]
+
+[node name="CardManager" type="Node"]
+script = ExtResource("1_gqyie")
+cards = Array[ExtResource("2_m3hcr")]([ExtResource("3_pmrxy")])
