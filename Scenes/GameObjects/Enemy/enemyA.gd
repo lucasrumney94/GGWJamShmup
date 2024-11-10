@@ -29,7 +29,7 @@ func Shoot():
 	# Set projectile velocity
 	#             inherit velo, speed, unit direction
 	proj.velocity = velocity + bulletFireSpeed * Vector2.DOWN
-	print("enemyA projectile velocity is:", proj.velocity)
+	print("enemyvelo", velocity, "projVELO:", proj.velocity)
 	
 	# Add a tiny variance in each enemies fire timer (+/- a set percent)
 	var current_wait_time = $ShootTimer.wait_time;
