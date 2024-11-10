@@ -11,8 +11,12 @@ func Shoot():
 	#instantiate projectile
 	#set projectile velocity
 	var p = projectile.instantiate()
-	get_parent().add_child(p)
+	var parent = get_tree().get_first_node_in_group("projectile_layer")
+	if parent == null:
+		parent = get_parent()
+		
 	p.global_position = global_position
+	parent.add_child(p)
 	p.velocity = Vector2.DOWN * 100
 
 

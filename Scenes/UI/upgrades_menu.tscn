@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://iaybyb2uypug"]
+[gd_scene load_steps=2 format=3 uid="uid://iaybyb2uypug"]
+
+[ext_resource type="Script" path="res://Scenes/UI/upgrades_menu.gd" id="1_r3hm5"]
 
 [node name="UpgradesMenu" type="Node"]
+script = ExtResource("1_r3hm5")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

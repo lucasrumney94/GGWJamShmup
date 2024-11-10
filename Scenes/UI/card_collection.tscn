@@ -6,7 +6,9 @@
 [node name="CardCollection" type="Node"]
 script = ExtResource("1_583ht")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,19 +16,19 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.462291, 0.462291, 0.462291, 1)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
 custom_minimum_size = Vector2(600, 600)
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 600.0
+offset_bottom = 600.0
 
-[node name="CardsContainer" type="GridContainer" parent="ScrollContainer"]
+[node name="CardsContainer" type="GridContainer" parent="CanvasLayer/ScrollContainer"]
 layout_mode = 2
 columns = 3
 
-[node name="CardTemplate" parent="ScrollContainer/CardsContainer" instance=ExtResource("1_tfgw4")]
+[node name="CardTemplate" parent="CanvasLayer/ScrollContainer/CardsContainer" instance=ExtResource("1_tfgw4")]
 layout_mode = 2
 
-[node name="BackButton" type="Button" parent="."]
+[node name="BackButton" type="Button" parent="CanvasLayer"]
 unique_name_in_owner = true
 offset_left = 38.0
 offset_top = 645.0
