@@ -1,0 +1,83 @@
+[gd_scene load_steps=3 format=3 uid="uid://brmimq82xkko0"]
+
+[ext_resource type="Script" path="res://Main/main_menu.gd" id="1_npmjq"]
+[ext_resource type="PackedScene" uid="uid://dsbm2iaw2j1m8" path="res://Main/main_game.tscn" id="2_rbkuc"]
+
+[node name="MainMenu" type="Node"]
+script = ExtResource("1_npmjq")
+main_game = ExtResource("2_rbkuc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.733005, 0.733005, 0.733005, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -311.0
+offset_top = 110.0
+offset_right = -187.0
+offset_bottom = 150.0
+grow_horizontal = 2
+scale = Vector2(6.425, 6.425)
+theme_override_constants/separation = -8
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+text = "ECHOES"
+horizontal_alignment = 2
+
+[node name="Control" type="Control" parent="CanvasLayer/HBoxContainer"]
+custom_minimum_size = Vector2(62, 0)
+layout_direction = 2
+layout_mode = 2
+
+[node name="Node2D" type="Node2D" parent="CanvasLayer/HBoxContainer/Control"]
+scale = Vector2(-1, 1)
+
+[node name="Label2" type="Label" parent="CanvasLayer/HBoxContainer/Control/Node2D"]
+offset_left = -66.0
+offset_top = 8.0
+offset_right = -4.0
+offset_bottom = 31.0
+text = "ECHOES"
+horizontal_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_left = 148.0
+offset_top = 415.0
+offset_right = 271.0
+offset_bottom = 551.0
+
+[node name="StartButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "START"
+
+[node name="UpgradeButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "MANAGE DECK"
+
+[node name="DeckButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "UPGRADE"
+
+[node name="OptionsButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "UPGRADE"
+
+[node name="QuitButton" type="Button" parent="CanvasLayer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "QUIT"
