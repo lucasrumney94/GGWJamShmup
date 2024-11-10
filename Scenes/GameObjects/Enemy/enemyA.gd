@@ -12,8 +12,12 @@ var rng = RandomNumberGenerator.new();
 func _ready():
 	$ShootTimer.timeout.connect(on_shoot_timeout)
 	
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	Move(delta)
+	
+func _process(delta: float) -> void:
+	#Move(delta)
+	pass
 	
 
 func Shoot():
