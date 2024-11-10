@@ -1,20 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://ck8myo2ae8f47"]
+[gd_scene load_steps=3 format=3 uid="uid://ck8myo2ae8f47"]
 
 [ext_resource type="Script" path="res://Scenes/UI/pause_screen.gd" id="1_51e7k"]
-[ext_resource type="PackedScene" uid="uid://brmimq82xkko0" path="res://Main/main_menu.tscn" id="2_5oixf"]
 [ext_resource type="PackedScene" uid="uid://prl0fdu5u1rt" path="res://Scenes/UI/options_menu.tscn" id="3_28078"]
 
 [node name="PauseScreen" type="Node"]
 process_mode = 3
 script = ExtResource("1_51e7k")
-main_menu = ExtResource("2_5oixf")
 options_menu = ExtResource("3_28078")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 129.0
+offset_top = 304.0
+offset_right = 208.0
+offset_bottom = 432.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PanelContainer"]
 layout_mode = 2
