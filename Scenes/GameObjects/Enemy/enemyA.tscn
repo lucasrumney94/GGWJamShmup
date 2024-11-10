@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://1ch8rkhl0t4n"]
+
+[ext_resource type="Script" path="res://Scenes/GameObjects/Enemy/enemyA.gd" id="1_nagqd"]
+[ext_resource type="PackedScene" uid="uid://dw0b51qcdf7qw" path="res://Scenes/GameObjects/projectile.tscn" id="2_bkgvh"]
+[ext_resource type="Texture2D" uid="uid://bai4icwfd1o2h" path="res://icon.svg" id="3_k4ytw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rq52p"]
+radius = 32.0
+
+[node name="EnemyA" type="CharacterBody2D"]
+position = Vector2(642, 83)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_nagqd")
+projectile = ExtResource("2_bkgvh")
+bulletFireSpeed = 1.0
+movementSpeed = 0.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(-0.5, -0.5)
+texture = ExtResource("3_k4ytw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rq52p")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
