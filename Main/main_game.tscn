@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Main/main_game.gd" id="1_gbkug"]
 [ext_resource type="Texture2D" uid="uid://bai4icwfd1o2h" path="res://icon.svg" id="2_71svj"]
 [ext_resource type="PackedScene" uid="uid://uw5for3hw80f" path="res://Scenes/GameObjects/enemy.tscn" id="2_c47u4"]
-[ext_resource type="PackedScene" uid="uid://ck8myo2ae8f47" path="res://Scenes/UI/pause_screen.tscn" id="2_pqw1d"]
+[ext_resource type="PackedScene" uid="uid://iaybyb2uypug" path="res://Scenes/UI/upgrades_menu.tscn" id="2_pqw1d"]
 [ext_resource type="PackedScene" uid="uid://1ch8rkhl0t4n" path="res://Scenes/GameObjects/Enemy/enemyA.tscn" id="6_guekn"]
 
 [sub_resource type="Environment" id="Environment_r12eh"]
