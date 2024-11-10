@@ -13,5 +13,5 @@ func _process(delta: float) -> void:
 	pass
 
 func Move(delta: float):
-	velocity = (initialMovementDirection * movementSpeed)
+	velocity = (initialMovementDirection * movementSpeed) + 4.*Vector2.RIGHT*sin(Time.get_ticks_msec()/100)
 	move_and_collide(velocity)
