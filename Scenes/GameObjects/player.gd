@@ -72,7 +72,7 @@ func readjust_armaments():
 	for i in armaments.size():
 		if armaments[i] == null:
 			return
-		armaments[i].global_position = global_position + (Vector2.UP).rotated(TAU / float(armaments.size())) * 32
+		armaments[i].global_position = global_position + (Vector2.UP).rotated((TAU / float(armaments.size()) * i)) * 32
 
 
 func die():
