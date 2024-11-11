@@ -7,4 +7,7 @@ func _physics_process(delta):
 		var motion = collision.get_remainder().bounce(collision.get_normal())
 		velocity = velocity.bounce(collision.get_normal())
 		move_and_collide(motion)
+		if collision_mask & 2 == 2:
+			collision_mask = collision_mask & ~2
+			collision_mask = collision_mask | 4
 	#pass

@@ -1,11 +1,18 @@
-[gd_scene load_steps=11 format=4 uid="uid://dsbm2iaw2j1m8"]
+[gd_scene load_steps=15 format=4 uid="uid://dsbm2iaw2j1m8"]
 
 [ext_resource type="PackedScene" uid="uid://vu06h5ml7x2f" path="res://Scenes/GameObjects/player.tscn" id="1_6emlj"]
 [ext_resource type="Script" path="res://Main/main_game.gd" id="1_gbkug"]
 [ext_resource type="Texture2D" uid="uid://bai4icwfd1o2h" path="res://icon.svg" id="2_71svj"]
 [ext_resource type="PackedScene" uid="uid://uw5for3hw80f" path="res://Scenes/GameObjects/enemy.tscn" id="2_c47u4"]
 [ext_resource type="PackedScene" uid="uid://ck8myo2ae8f47" path="res://Scenes/UI/pause_screen.tscn" id="2_l4nfw"]
+[ext_resource type="Script" path="res://Scripts/boundary_cleaner.gd" id="3_n7552"]
 [ext_resource type="PackedScene" uid="uid://1ch8rkhl0t4n" path="res://Scenes/GameObjects/Enemy/enemyA.tscn" id="6_guekn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmcqa"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_qermc"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_00wlu"]
 
 [sub_resource type="Environment" id="Environment_r12eh"]
 
@@ -36,22 +43,82 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 540
 
-[node name="Panel" type="Panel" parent="CanvasLayer/HBoxContainer"]
+[node name="LeftPanel" type="Panel" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_rmcqa")
 
-[node name="Panel3" type="Panel" parent="CanvasLayer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/LeftPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="TimeLabel" type="Label" parent="CanvasLayer/HBoxContainer/LeftPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "TIME"
+horizontal_alignment = 2
+
+[node name="RightPanel" type="Panel" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_rmcqa")
 
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Camera2D" type="Camera2D" parent="Node2D"]
 position = Vector2(640, 360)
 
+[node name="Boundaries" type="Node2D" parent="Node2D"]
+
+[node name="BoundaryCleaner" type="Area2D" parent="Node2D/Boundaries"]
+position = Vector2(621, 805)
+collision_layer = 0
+collision_mask = 12
+script = ExtResource("3_n7552")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Boundaries/BoundaryCleaner"]
+shape = SubResource("WorldBoundaryShape2D_qermc")
+
+[node name="BoundaryCleaner2" type="Area2D" parent="Node2D/Boundaries"]
+position = Vector2(630, -65)
+rotation = -3.14159
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("3_n7552")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Boundaries/BoundaryCleaner2"]
+shape = SubResource("WorldBoundaryShape2D_qermc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Node2D/Boundaries"]
+position = Vector2(632, 32)
+rotation = 3.14159
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Boundaries/StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_00wlu")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D/Boundaries/StaticBody2D"]
+position = Vector2(-6.10352e-05, -649)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_00wlu")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Node2D/Boundaries/StaticBody2D"]
+position = Vector2(-275, -346)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_00wlu")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Node2D/Boundaries/StaticBody2D"]
+position = Vector2(254, -346)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_00wlu")
+
 [node name="Background" type="Node2D" parent="Node2D"]
 
 [node name="3DViewport" type="SubViewportContainer" parent="Node2D/Background"]
+visible = false
 custom_minimum_size = Vector2(540, 720)
 offset_left = 370.0
 offset_right = 910.0
@@ -60,7 +127,7 @@ offset_bottom = 720.0
 [node name="SubViewport" type="SubViewport" parent="Node2D/Background/3DViewport"]
 handle_input_locally = false
 size = Vector2i(540, 720)
-render_target_update_mode = 4
+render_target_update_mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="Node2D/Background/3DViewport/SubViewport"]
 environment = SubResource("Environment_r12eh")
@@ -86,9 +153,9 @@ tile_set = SubResource("TileSet_hot75")
 [node name="ProjectileLayer" type="Node2D" parent="Node2D" groups=["projectile_layer"]]
 
 [node name="Player" parent="Node2D" instance=ExtResource("1_6emlj")]
+collision_mask = 1
 
 [node name="Enemy" parent="Node2D" instance=ExtResource("2_c47u4")]
 
 [node name="EnemyA" parent="Node2D" instance=ExtResource("6_guekn")]
 position = Vector2(487, 81)
-bulletFireSpeed = 200.0

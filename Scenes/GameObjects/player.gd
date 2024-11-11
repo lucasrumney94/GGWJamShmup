@@ -15,9 +15,12 @@ extends CharacterBody2D
 
 var armaments: Array[Node2D] = []
 
+var alive: bool = true
+
 
 func _ready():
 	Callable(init).call_deferred()
+	%HitBox.hit.connect(on_hit)
 
 
 func init():
@@ -28,6 +31,9 @@ func init():
 
 
 func _physics_process(delta):
+	if !alive:
+		return
+	
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	
 	#ANIMATE SHIP
@@ -66,4 +72,17 @@ func readjust_armaments():
 	for i in armaments.size():
 		if armaments[i] == null:
 			return
-		armaments[i].global_position = global_position + (Vector2.UP).rotated(TAU / armaments.size()) * 32
+		armaments[i].global_position = global_position + (Vector2.UP).rotated(TAU / float(armaments.size())) * 32
+
+
+func die():
+	alive = false
+	#TODO lose control
+	#EXPLODE
+	#SCENE SCROLLING STOPS
+	print("THE PLAYER SHOULD NOW DIE")
+	GameEvents.emit_game_over()
+
+
+func on_hit(strength: float):
+	die()

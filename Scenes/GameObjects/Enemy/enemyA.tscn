@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/GameObjects/Enemy/enemyA.gd" id="1_nagqd"]
 [ext_resource type="Texture2D" uid="uid://bai4icwfd1o2h" path="res://icon.svg" id="3_k4ytw"]
-[ext_resource type="PackedScene" uid="uid://kykly0qu3k2o" path="res://Scenes/GameObjects/Enemy/BasicGun.tscn" id="4_mfccx"]
+[ext_resource type="PackedScene" uid="uid://d2hijcl02ac8b" path="res://Scenes/GameObjects/Enemy/BasicGun.tscn" id="4_mfccx"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rq52p"]
 radius = 32.0
