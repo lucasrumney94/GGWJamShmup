@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://clixfplycwhd"]
+
+[ext_resource type="Script" path="res://Scenes/Autoloads/assets_manager.gd" id="1_gdo44"]
+[ext_resource type="PackedScene" uid="uid://c5ce8itc6k4aj" path="res://Scenes/UI/card_template.tscn" id="2_3d35t"]
+
+[node name="AssetsManager" type="Node"]
+script = ExtResource("1_gdo44")
+card_template = ExtResource("2_3d35t")

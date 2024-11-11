@@ -1,6 +1,12 @@
 extends CharacterBody2D
 
+signal attack_pressed
+signal attack_released
+signal active_pressed
+signal active_released
+
 @onready var graphics: Node2D = $Graphics
+@onready var input_component: InputComponent = $InputComponent
 
 @export var armament_point_scene: PackedScene
 
@@ -16,6 +22,8 @@ extends CharacterBody2D
 var armaments: Array[Node2D] = []
 
 var alive: bool = true
+var is_attacking: bool = false
+var active_input_active: bool = false
 
 
 func _ready():
@@ -25,16 +33,30 @@ func _ready():
 
 func init():
 	armaments.clear()
-	add_armament(armament_point_scene)
-	add_armament(armament_point_scene)
-	add_armament(armament_point_scene)
+	#TODO get armaments from current build and add them
+	#add_armament(armament_point_scene)
+	#add_armament(armament_point_scene)
+	#add_armament(armament_point_scene)
 
 
 func _physics_process(delta):
 	if !alive:
 		return
 	
-	var input_dir = Input.get_vector("left", "right", "forward", "backward")
+	#var input_dir = Input.get_vector("left", "right", "forward", "backward")
+	var input_dir = input_component.get_move_vector()
+	var input_attack = input_component.get_attacking()
+	if is_attacking != input_attack:
+		is_attacking = input_attack
+		if is_attacking:
+			attack_pressed.emit()
+		else: attack_released.emit()
+	var input_active = input_component.get_active()
+	if active_input_active != input_active:
+		active_input_active = input_active
+		if active_input_active:
+			active_pressed.emit()
+		else: active_released.emit()
 	
 	#ANIMATE SHIP
 	graphics.scale.x = lerpf(1, 0.66, abs(input_dir.x))
@@ -82,6 +104,14 @@ func die():
 	#SCENE SCROLLING STOPS
 	print("THE PLAYER SHOULD NOW DIE")
 	GameEvents.emit_game_over()
+
+
+func get_attacking() -> bool:
+	return is_attacking
+
+
+func get_active_input() -> bool:
+	return active_input_active
 
 
 func on_hit(strength: float):

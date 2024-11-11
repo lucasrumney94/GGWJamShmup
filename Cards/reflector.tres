@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://biimm4f1nrw5e"]
+[gd_resource type="Resource" script_class="Card" load_steps=4 format=3 uid="uid://biimm4f1nrw5e"]
 
 [ext_resource type="Script" path="res://Cards/card.gd" id="1_3g4xi"]
+[ext_resource type="PackedScene" uid="uid://bnqkhyoqu7gyf" path="res://Scenes/ShipParts/reflector.tscn" id="1_ilpbb"]
 [ext_resource type="Texture2D" uid="uid://bai4icwfd1o2h" path="res://icon.svg" id="2_irgeo"]
 
 [resource]
@@ -12,3 +13,4 @@ texture = ExtResource("2_irgeo")
 details = "Activate with shift? to reflect incoming energy attacks"
 cost = 3
 rarity = 0.0
+scene = ExtResource("1_ilpbb")

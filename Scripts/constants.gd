@@ -8,3 +8,9 @@ enum CardType {
 	BOMB,
 	EFFECT
 }
+
+enum InputType {
+	ATTACK,
+	ACTIVE,
+	PASSIVE
+}

@@ -9,7 +9,12 @@ var game_time: float = 0.0
 func _ready():
 	GameEvents.game_over.connect(on_game_over)
 	
+	Callable(init).call_deferred()
+
+
+func init():
 	game_running = true
+	GameEvents.emit_game_start()
 
 
 func _input(event: InputEvent):
