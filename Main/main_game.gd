@@ -19,11 +19,12 @@ func _input(event: InputEvent):
 		get_tree().paused = true
 
 
-func _physics_process(delta):
+func _process(delta):
 	#%Parallax2D.screen_offset.y += delta * 10
 	
 	if game_running:
 		game_time += delta
+		GameEvents.game_time = game_time
 		%TimeLabel.text = Utilities.float_to_time_string(game_time)
 
 

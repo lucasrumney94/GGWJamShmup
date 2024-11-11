@@ -1,5 +1,7 @@
 extends Node
 
+var game_time: float = 0.0
+
 signal game_over
 
 
