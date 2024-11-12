@@ -13,6 +13,7 @@ scale = Vector2(2, 2)
 texture = ExtResource("2_h0f85")
 
 [node name="CooldownTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="ProjectileLauncher" type="Node2D" parent="."]
 script = ExtResource("3_e4pb8")

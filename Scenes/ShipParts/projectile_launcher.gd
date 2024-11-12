@@ -34,13 +34,16 @@ func Shoot():
 		parent = get_parent()
 		
 	p.global_position = global_position
-	var velocity = bullet_speed * self.to_global(transform.y).normalized()
+	#var velocity = bullet_speed * self.to_global(transform.y).normalized()
+	var velocity = bullet_speed * -transform.y
 	
 	#physics_body = get_physics_parent(get_parent())
 	if physics_body != null:
-		velocity += physics_body.velocity
+		if velocity.normalized().dot(physics_body.velocity.normalized()) > 0.0:
+			velocity += physics_body.velocity
 		if physics_body.collision_layer & 2 == 2: #IS PLAYER
 			p.use_friendly_collision()
+		print(str(velocity))
 		
 	parent.add_child(p)
 	

@@ -25,7 +25,7 @@ func populate_selection(hand: Array[Card]):
 		%CardContainer.add_child(card)
 		card.setup_card(hand[i], i)
 		
-		card.selected.connect(on_card_selected.bind(i))
+		card.selected.connect(on_card_selected)
 
 
 func destroy():
