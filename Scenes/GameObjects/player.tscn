@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/GameObjects/player.gd" id="1_x2igu"]
 [ext_resource type="Script" path="res://Scenes/GameObjects/input_component.gd" id="3_d3fsw"]
 [ext_resource type="PackedScene" uid="uid://binfb3b7c0tiy" path="res://Scenes/GameObjects/armament_point.tscn" id="3_fn052"]
-[ext_resource type="Script" path="res://Scenes/GameObjects/hit_box.gd" id="4_sjcyy"]
+[ext_resource type="PackedScene" uid="uid://31thige2dh8j" path="res://Scenes/GameObjects/hitbox_component.tscn" id="5_7fk5i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kndgj"]
 radius = 32.0
@@ -31,11 +31,8 @@ shape = SubResource("CircleShape2D_kndgj")
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_mbb6p")
 
-[node name="HitBox" type="Area2D" parent="."]
+[node name="HitBox" parent="." instance=ExtResource("5_7fk5i")]
 unique_name_in_owner = true
-collision_layer = 2
-collision_mask = 12
-script = ExtResource("4_sjcyy")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_5dfry")

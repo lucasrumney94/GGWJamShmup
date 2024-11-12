@@ -14,9 +14,12 @@ func init():
 
 
 func get_physics_parent(child: Node):
+	if child is PhysicsBody2D:
+		return child
 	var par = child.get_parent()
-	#if par == null:
-		#return null
+	if par == null:
+		printerr(child.name + " HAS NO PARENT")
+		return null
 	print(par.name)
 	if par is PhysicsBody2D:
 		return par
@@ -35,7 +38,7 @@ func Shoot():
 		
 	p.global_position = global_position
 	#var velocity = bullet_speed * self.to_global(transform.y).normalized()
-	var velocity = bullet_speed * -transform.y
+	var velocity = bullet_speed * Vector2.UP.rotated(global_rotation)
 	
 	#physics_body = get_physics_parent(get_parent())
 	if physics_body != null:
@@ -43,7 +46,7 @@ func Shoot():
 			velocity += physics_body.velocity
 		if physics_body.collision_layer & 2 == 2: #IS PLAYER
 			p.use_friendly_collision()
-		print(str(velocity))
+		#print(str(velocity))
 		
 	parent.add_child(p)
 	

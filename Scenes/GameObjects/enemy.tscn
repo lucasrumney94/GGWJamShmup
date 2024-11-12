@@ -1,22 +1,30 @@
-[gd_scene load_steps=5 format=3 uid="uid://uw5for3hw80f"]
+[gd_scene load_steps=9 format=3 uid="uid://uw5for3hw80f"]
 
 [ext_resource type="Script" path="res://Scenes/GameObjects/enemy.gd" id="1_7junr"]
 [ext_resource type="Texture2D" uid="uid://bai4icwfd1o2h" path="res://icon.svg" id="1_n50t4"]
 [ext_resource type="PackedScene" uid="uid://dw0b51qcdf7qw" path="res://Scenes/GameObjects/projectile.tscn" id="2_c03um"]
+[ext_resource type="PackedScene" uid="uid://dorly2kuuprf6" path="res://Scenes/ShipParts/gun.tscn" id="4_pnnwi"]
+[ext_resource type="Script" path="res://Scenes/GameObjects/mover_component.gd" id="5_17wr4"]
+[ext_resource type="PackedScene" uid="uid://31thige2dh8j" path="res://Scenes/GameObjects/hitbox_component.tscn" id="6_r6w3l"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rq52p"]
 radius = 32.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_5h8hq"]
+radius = 32.0
+
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(642, 83)
+rotation = 3.14159
 collision_layer = 4
 collision_mask = 0
+motion_mode = 1
 script = ExtResource("1_7junr")
 projectile = ExtResource("2_c03um")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 1)
-scale = Vector2(-0.5, -0.5)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_n50t4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -25,3 +33,18 @@ shape = SubResource("CircleShape2D_rq52p")
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[node name="Gun" parent="." instance=ExtResource("4_pnnwi")]
+position = Vector2(0, -33)
+
+[node name="Mover" type="Node" parent="."]
+script = ExtResource("5_17wr4")
+movementSpeed = 20.0
+
+[node name="HitBox" parent="." instance=ExtResource("6_r6w3l")]
+unique_name_in_owner = true
+collision_layer = 4
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_5h8hq")

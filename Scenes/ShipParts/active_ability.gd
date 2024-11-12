@@ -21,6 +21,8 @@ func init():
 				get_parent().owner.attack_released.connect(activate.bind(false))
 			if get_parent().owner.has_method("get_attacking"):
 				input_active = get_parent().owner.get_attacking()
+			else: 
+				activate(true)
 		Constants.InputType.ACTIVE:
 			if get_parent().owner.has_signal("active_pressed"):
 				get_parent().owner.active_pressed.connect(activate.bind(true))
@@ -28,6 +30,8 @@ func init():
 				get_parent().owner.active_released.connect(activate.bind(false))
 			if get_parent().owner.has_method("get_active_input"):
 				input_active = get_parent().owner.get_active_input()
+			else: 
+				activate(true)
 	
 	#IF NO VIABLE EVENTS TO SUBSCRIBE TO, SET TURN OFF TIMER.ONE_SHOT
 	$CooldownTimer.timeout.connect(on_cooldown_timeout)

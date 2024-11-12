@@ -84,7 +84,7 @@ position = Vector2(640, 360)
 [node name="BoundaryCleaner" type="Area2D" parent="Node2D/Boundaries"]
 position = Vector2(621, 805)
 collision_layer = 0
-collision_mask = 12
+collision_mask = 28
 script = ExtResource("3_n7552")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Boundaries/BoundaryCleaner"]
@@ -94,7 +94,7 @@ shape = SubResource("WorldBoundaryShape2D_qermc")
 position = Vector2(630, -65)
 rotation = -3.14159
 collision_layer = 0
-collision_mask = 8
+collision_mask = 24
 script = ExtResource("3_n7552")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Boundaries/BoundaryCleaner2"]
