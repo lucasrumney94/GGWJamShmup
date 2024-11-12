@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dorly2kuuprf6"]
+
+[ext_resource type="Script" path="res://Scenes/ShipParts/active_ability.gd" id="1_m0fcq"]
+[ext_resource type="Texture2D" uid="uid://dx74l0lcvh1ey" path="res://Scenes/ShipParts/gun16.png" id="2_h0f85"]
+[ext_resource type="Script" path="res://Scenes/ShipParts/projectile_launcher.gd" id="3_e4pb8"]
+[ext_resource type="PackedScene" uid="uid://dw0b51qcdf7qw" path="res://Scenes/GameObjects/projectile.tscn" id="4_g0e4a"]
+
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_m0fcq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_h0f85")
+
+[node name="CooldownTimer" type="Timer" parent="."]
+
+[node name="ProjectileLauncher" type="Node2D" parent="."]
+script = ExtResource("3_e4pb8")
+projectile = ExtResource("4_g0e4a")
+
+[connection signal="do_attack" from="." to="ProjectileLauncher" method="_on_gun_do_attack"]

@@ -1,12 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjeaf8r046vqf"]
+[gd_scene load_steps=6 format=3 uid="uid://bjeaf8r046vqf"]
 
 [ext_resource type="Script" path="res://Scenes/Autoloads/card_manager.gd" id="1_gqyie"]
 [ext_resource type="Script" path="res://Cards/card.gd" id="2_m3hcr"]
 [ext_resource type="PackedScene" uid="uid://cmanag2dj1rq2" path="res://Scenes/UI/card_select_ui.tscn" id="2_ow2lu"]
 [ext_resource type="Resource" uid="uid://biimm4f1nrw5e" path="res://Cards/reflector.tres" id="3_pmrxy"]
+[ext_resource type="Resource" uid="uid://gywr1yu0fh2j" path="res://Cards/basic_gun.tres" id="5_axvke"]
 
 [node name="CardManager" type="Node"]
 script = ExtResource("1_gqyie")
 card_select_ui = ExtResource("2_ow2lu")
-cards = Array[ExtResource("2_m3hcr")]([ExtResource("3_pmrxy")])
-deck_current_build = Array[ExtResource("2_m3hcr")]([ExtResource("3_pmrxy")])
+cards = Array[ExtResource("2_m3hcr")]([ExtResource("3_pmrxy"), ExtResource("5_axvke")])
+deck_current_build = Array[ExtResource("2_m3hcr")]([ExtResource("3_pmrxy"), ExtResource("5_axvke")])

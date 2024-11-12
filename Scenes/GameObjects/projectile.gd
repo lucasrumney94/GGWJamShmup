@@ -8,6 +8,14 @@ func _physics_process(delta):
 		velocity = velocity.bounce(collision.get_normal())
 		move_and_collide(motion)
 		if collision_mask & 2 == 2:
-			collision_mask = collision_mask & ~2
-			collision_mask = collision_mask | 4
+			use_friendly_collision()
+			#collision_mask = collision_mask & ~2
+			#collision_mask = collision_mask | 4
 	#pass
+
+func use_friendly_collision():
+	collision_mask = collision_mask & ~2
+	collision_mask = collision_mask | 4
+	
+	collision_layer = collision_layer & ~8
+	collision_layer = collision_layer | 16

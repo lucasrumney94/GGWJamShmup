@@ -6,6 +6,7 @@ extends Node
 
 func _ready():
 	%ResumeButton.pressed.connect(on_resume_pressed)
+	%RestartButton.pressed.connect(on_restart_pressed)
 	%OptionsButton.pressed.connect(on_options_pressed)
 	%QuitButton.pressed.connect(on_quit_pressed)
 
@@ -18,6 +19,10 @@ func on_resume_pressed():
 func on_options_pressed():
 	var options = options_menu.instantiate()
 	get_parent().add_child(options)
+
+
+func on_restart_pressed():
+	get_tree().change_scene_to_file(get_tree().current_scene.scene_file_path)
 
 
 func on_quit_pressed():

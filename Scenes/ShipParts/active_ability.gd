@@ -1,6 +1,9 @@
 extends Node2D
 
+signal do_attack
+
 @export var input_type: Constants.InputType
+@export var animation_player: AnimationPlayer
 var input_active: bool = false
 
 func _ready():
@@ -15,7 +18,7 @@ func init():
 			if get_parent().owner.has_signal("attack_pressed"):
 				get_parent().owner.attack_pressed.connect(activate.bind(true))
 			if get_parent().owner.has_signal("attack_released"):
-				get_parent().owner.attack_repeased.connect(activate.bind(false))
+				get_parent().owner.attack_released.connect(activate.bind(false))
 			if get_parent().owner.has_method("get_attacking"):
 				input_active = get_parent().owner.get_attacking()
 		Constants.InputType.ACTIVE:
@@ -31,7 +34,9 @@ func init():
 
 
 func attack():
-	$AnimationPlayer.play("attack")
+	if animation_player != null:
+		animation_player.play("attack")
+	do_attack.emit()
 
 
 func on_cooldown_timeout():

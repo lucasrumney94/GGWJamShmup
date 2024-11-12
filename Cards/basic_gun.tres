@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="Card" load_steps=2 format=3 uid="uid://gywr1yu0fh2j"]
+[gd_resource type="Resource" script_class="Card" load_steps=3 format=3 uid="uid://gywr1yu0fh2j"]
 
 [ext_resource type="Script" path="res://Cards/card.gd" id="1_ep1tq"]
+[ext_resource type="PackedScene" uid="uid://dorly2kuuprf6" path="res://Scenes/ShipParts/gun.tscn" id="1_ft3eg"]
 
 [resource]
 script = ExtResource("1_ep1tq")
@@ -10,3 +11,4 @@ type = 0
 details = "just a basic gun"
 cost = 0
 rarity = 0.0
+scene = ExtResource("1_ft3eg")
