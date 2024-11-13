@@ -50,3 +50,6 @@ script = ExtResource("6_00j76")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
 shape = SubResource("CircleShape2D_uh5ou")
+
+[node name="AbilityContainer" type="Node2D" parent="."]
+unique_name_in_owner = true

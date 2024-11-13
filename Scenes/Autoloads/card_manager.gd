@@ -77,6 +77,7 @@ func play_card(hand_index: int):
 	
 	var card = hand[hand_index]
 	hand.remove_at(hand_index)
+	GameEvents.emit_hand_update()
 	
 	match card.type:
 		Constants.CardType.GUN, Constants.CardType.ACTIVE, Constants.CardType.PASSIVE:

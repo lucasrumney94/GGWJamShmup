@@ -83,7 +83,8 @@ func add_armament(armament) -> Node2D:
 		instance = armament.instantiate() as Node2D
 	else: instance = armament
 	
-	$Graphics.add_child(instance)
+	#$Graphics.add_child(instance)
+	%AbilityContainer.add_child(instance)
 	armaments.append(instance)
 	
 	Callable(readjust_armaments).call_deferred()
