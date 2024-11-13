@@ -1,15 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://vu06h5ml7x2f"]
+[gd_scene load_steps=10 format=3 uid="uid://vu06h5ml7x2f"]
 
 [ext_resource type="Texture2D" uid="uid://bai4icwfd1o2h" path="res://icon.svg" id="1_mbb6p"]
 [ext_resource type="Script" path="res://Scenes/GameObjects/player.gd" id="1_x2igu"]
 [ext_resource type="Script" path="res://Scenes/GameObjects/input_component.gd" id="3_d3fsw"]
 [ext_resource type="PackedScene" uid="uid://binfb3b7c0tiy" path="res://Scenes/GameObjects/armament_point.tscn" id="3_fn052"]
 [ext_resource type="PackedScene" uid="uid://31thige2dh8j" path="res://Scenes/GameObjects/hitbox_component.tscn" id="5_7fk5i"]
+[ext_resource type="Script" path="res://Scenes/GameObjects/pickup_area.gd" id="6_00j76"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kndgj"]
 radius = 32.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5dfry"]
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uh5ou"]
 radius = 32.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
@@ -36,3 +40,13 @@ unique_name_in_owner = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_5dfry")
+
+[node name="PickupArea" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 32
+input_pickable = false
+monitorable = false
+script = ExtResource("6_00j76")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("CircleShape2D_uh5ou")

@@ -14,3 +14,16 @@ enum InputType {
 	ACTIVE,
 	PASSIVE
 }
+
+enum PickupType {
+	CARD,
+	HEALTH,
+	FUEL
+}
+
+enum EnemyType {
+	A,
+	B,
+	C,
+	D
+}

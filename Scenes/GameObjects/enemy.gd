@@ -1,6 +1,10 @@
 extends CharacterBody2D
 
-@export var projectile: PackedScene
+#signal enemy_died(type: int)
+
+@export var enemy_type: Constants.EnemyType
+@export var cards: Array[Card] = []
+#@export var projectile: PackedScene
 
 
 func _ready():
@@ -27,4 +31,11 @@ func on_shoot_timeout():
 	
 
 func on_hit(strength: float):
+	destroy()
+
+
+func destroy():
+	GameEvents.emit_enemy_killed(enemy_type)
+	for card in cards:
+		GameEvents.emit_pickup_dropped(global_position, card, 1)
 	queue_free()

@@ -81,3 +81,4 @@ active={
 2d_physics/layer_3="enemy"
 2d_physics/layer_4="projectile"
 2d_physics/layer_5="friendly_projectile"
+2d_physics/layer_6="Pickup"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://dsbm2iaw2j1m8"]
+[gd_scene load_steps=17 format=4 uid="uid://dsbm2iaw2j1m8"]
 
 [ext_resource type="PackedScene" uid="uid://vu06h5ml7x2f" path="res://Scenes/GameObjects/player.tscn" id="1_6emlj"]
 [ext_resource type="Script" path="res://Main/main_game.gd" id="1_gbkug"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://uw5for3hw80f" path="res://Scenes/GameObjects/enemy.tscn" id="2_c47u4"]
 [ext_resource type="PackedScene" uid="uid://ck8myo2ae8f47" path="res://Scenes/UI/pause_screen.tscn" id="2_l4nfw"]
 [ext_resource type="Script" path="res://Scripts/boundary_cleaner.gd" id="3_n7552"]
-[ext_resource type="PackedScene" uid="uid://1ch8rkhl0t4n" path="res://Scenes/GameObjects/Enemy/enemyA.tscn" id="6_guekn"]
+[ext_resource type="Script" path="res://Main/pickups_manager.gd" id="5_emye5"]
+[ext_resource type="Script" path="res://Cards/card.gd" id="8_1x7mm"]
+[ext_resource type="Resource" uid="uid://gywr1yu0fh2j" path="res://Cards/basic_gun.tres" id="9_8vuv8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rmcqa"]
 
@@ -160,10 +162,11 @@ tile_set = SubResource("TileSet_hot75")
 
 [node name="ProjectileLayer" type="Node2D" parent="Node2D" groups=["projectile_layer"]]
 
+[node name="PickupsLayer" type="Node2D" parent="Node2D"]
+script = ExtResource("5_emye5")
+
 [node name="Player" parent="Node2D" instance=ExtResource("1_6emlj")]
 collision_mask = 1
 
 [node name="Enemy" parent="Node2D" instance=ExtResource("2_c47u4")]
-
-[node name="EnemyA" parent="Node2D" instance=ExtResource("6_guekn")]
-position = Vector2(487, 81)
+cards = Array[ExtResource("8_1x7mm")]([ExtResource("9_8vuv8")])
