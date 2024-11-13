@@ -16,6 +16,8 @@ func _ready():
 func setup_card(new_card: Card, index: int):
 	selection_index = index
 	card = new_card
+	if card == null: return
+	
 	%NameLabel.text = card.name
 	%DescriptionLabel.text = card.details
 	%ArtworkTextureRect.texture = card.texture

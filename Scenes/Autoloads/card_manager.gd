@@ -4,6 +4,7 @@ extends Node
 #FILL THIS WITH POSSIBLE CARDS
 @export var cards: Array[Card] = []
 
+var collected: Array[String]
 var collection: Dictionary = {}
 @export var deck_current_build: Array[Card] = []
 

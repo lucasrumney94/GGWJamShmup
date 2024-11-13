@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c048ak6ikths8"]
+[gd_scene load_steps=2 format=3 uid="uid://c048ak6ikths8"]
 
 [ext_resource type="Script" path="res://Scenes/UI/card_collection.gd" id="1_583ht"]
-[ext_resource type="PackedScene" uid="uid://c5ce8itc6k4aj" path="res://Scenes/UI/card_template.tscn" id="1_tfgw4"]
 
 [node name="CardCollection" type="Node"]
 script = ExtResource("1_583ht")
@@ -16,18 +15,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.462291, 0.462291, 0.462291, 1)
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer"]
-custom_minimum_size = Vector2(600, 600)
-offset_right = 600.0
-offset_bottom = 600.0
-
-[node name="CardsContainer" type="GridContainer" parent="CanvasLayer/ScrollContainer"]
-layout_mode = 2
-columns = 3
-
-[node name="CardTemplate" parent="CanvasLayer/ScrollContainer/CardsContainer" instance=ExtResource("1_tfgw4")]
-layout_mode = 2
-
 [node name="BackButton" type="Button" parent="CanvasLayer"]
 unique_name_in_owner = true
 offset_left = 38.0
@@ -35,3 +22,44 @@ offset_top = 645.0
 offset_right = 88.0
 offset_bottom = 676.0
 text = "BACK"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -430.0
+offset_top = -300.0
+offset_right = 430.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/HBoxContainer"]
+custom_minimum_size = Vector2(600, 600)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="CardsContainer" type="GridContainer" parent="CanvasLayer/HBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Deck"
+horizontal_alignment = 1
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="CanvasLayer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(256, 540)
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="DeckList" type="ItemList" parent="CanvasLayer/HBoxContainer/VBoxContainer/ScrollContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 540)
+layout_mode = 2
