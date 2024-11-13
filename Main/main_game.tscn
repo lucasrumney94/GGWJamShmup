@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=4 uid="uid://dsbm2iaw2j1m8"]
+[gd_scene load_steps=18 format=4 uid="uid://dsbm2iaw2j1m8"]
 
 [ext_resource type="PackedScene" uid="uid://vu06h5ml7x2f" path="res://Scenes/GameObjects/player.tscn" id="1_6emlj"]
 [ext_resource type="Script" path="res://Main/main_game.gd" id="1_gbkug"]
 [ext_resource type="Texture2D" uid="uid://bai4icwfd1o2h" path="res://icon.svg" id="2_71svj"]
 [ext_resource type="PackedScene" uid="uid://uw5for3hw80f" path="res://Scenes/GameObjects/enemy.tscn" id="2_c47u4"]
 [ext_resource type="PackedScene" uid="uid://ck8myo2ae8f47" path="res://Scenes/UI/pause_screen.tscn" id="2_l4nfw"]
+[ext_resource type="Script" path="res://Main/equipped_ui.gd" id="3_fjqfu"]
 [ext_resource type="Script" path="res://Scripts/boundary_cleaner.gd" id="3_n7552"]
 [ext_resource type="Script" path="res://Main/pickups_manager.gd" id="5_emye5"]
 [ext_resource type="Script" path="res://Cards/card.gd" id="8_1x7mm"]
@@ -52,16 +53,39 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_rmcqa")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/LeftPanel"]
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = 15
 anchor_right = 1.0
-offset_bottom = 23.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
 
 [node name="TimeLabel" type="Label" parent="CanvasLayer/HBoxContainer/LeftPanel/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "TIME"
 horizontal_alignment = 2
+
+[node name="EquippedUI" type="Control" parent="CanvasLayer/HBoxContainer/LeftPanel/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+script = ExtResource("3_fjqfu")
+
+[node name="Button" type="Button" parent="CanvasLayer/HBoxContainer/LeftPanel/VBoxContainer/EquippedUI"]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="RightPanel" type="Panel" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
@@ -75,6 +99,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="DeckContainer" type="HBoxContainer" parent="CanvasLayer/HBoxContainer/RightPanel/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+theme_override_constants/separation = -96
+alignment = 1
+
+[node name="HandContainer" type="VBoxContainer" parent="CanvasLayer/HBoxContainer/RightPanel/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
 
 [node name="Node2D" type="Node2D" parent="."]
 

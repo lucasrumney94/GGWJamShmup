@@ -52,6 +52,7 @@ func offer_hand():
 func on_game_start():
 	deck = deck_current_build.duplicate()
 	deck.shuffle()
+	hand.clear()
 	for i in 3:
 		deal_card()
 	
@@ -65,6 +66,8 @@ func deal_card():
 	var card = deck[0]
 	hand.append(card)
 	deck.remove_at(0)
+	GameEvents.emit_deck_update()
+	GameEvents.emit_hand_update()
 
 
 func play_card(hand_index: int):
@@ -78,11 +81,14 @@ func play_card(hand_index: int):
 	match card.type:
 		Constants.CardType.GUN, Constants.CardType.ACTIVE, Constants.CardType.PASSIVE:
 			var players = get_tree().get_nodes_in_group("player")
+			var instances: Array[Node2D] = []
 			for player in players:
 				if !player.input_component.is_player:
 					continue
-				player.add_armament(card.scene)#get to player.add_armament(card.scene)
+				instances.append(player.add_armament(card.scene))#get to player.add_armament(card.scene)
+				
 			equipped.append(card)
+			GameEvents.emit_equipped(card, instances)
 		Constants.CardType.BOMB:
 			#FIRE OFF BOMB, INSERT BACK INTO DECK
 			pass

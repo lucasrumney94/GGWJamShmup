@@ -77,7 +77,7 @@ func accelerate_in_direction(direction: Vector2, mult: float, delta):
 	velocity = velocity.lerp(desired_velocity, 1 - exp(-acceleration * delta))
 
 
-func add_armament(armament):
+func add_armament(armament) -> Node2D:
 	var instance: Node2D = null
 	if armament is PackedScene:
 		instance = armament.instantiate() as Node2D
@@ -87,6 +87,7 @@ func add_armament(armament):
 	armaments.append(instance)
 	
 	Callable(readjust_armaments).call_deferred()
+	return instance
 
 
 func readjust_armaments():

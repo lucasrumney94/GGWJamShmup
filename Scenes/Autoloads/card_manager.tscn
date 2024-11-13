@@ -10,4 +10,4 @@
 script = ExtResource("1_gqyie")
 card_select_ui = ExtResource("2_ow2lu")
 cards = Array[ExtResource("2_m3hcr")]([ExtResource("3_pmrxy"), ExtResource("5_axvke")])
-deck_current_build = Array[ExtResource("2_m3hcr")]([ExtResource("3_pmrxy"), ExtResource("5_axvke")])
+deck_current_build = Array[ExtResource("2_m3hcr")]([ExtResource("3_pmrxy"), ExtResource("5_axvke"), ExtResource("5_axvke"), ExtResource("5_axvke"), ExtResource("5_axvke"), ExtResource("5_axvke")])
